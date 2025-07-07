@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
@@ -11,7 +12,7 @@ export default async function Home() {
       <div className="flex flex-row gap-4">
         {data.map((product) => (
           <div key={product.id} className="w-1/4 bg-gray-900 rounded-2xl">
-            <img src={product.img} alt={product.name} className="w-full h-78 object-cover rounded-t-2xl" />
+            {/* <Image  width={400}   height={300} src={product.img} alt={product.name} className="object-cover rounded-t-2xl" /> */}
             <div className="p-4">
               <h2 className="text-xl font-semibold text-white">{product.name}</h2>
               <p className="text-gray-400">{product.description}</p>
