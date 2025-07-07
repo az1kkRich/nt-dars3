@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/${id}`);
+        const response = await fetch(`/api/${id}`);
         const data = await response.json();
         setData(data);
         setLoading(false);
@@ -35,7 +35,7 @@ const Detail = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/${id}`, {
+      const res = await fetch(`/api/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -63,7 +63,7 @@ const Detail = () => {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/${id}`, {
+      const res = await fetch(`/api/${id}`, {
         method: "DELETE"
       });
 

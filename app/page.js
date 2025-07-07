@@ -1,9 +1,24 @@
-import Image from "next/image";
+"use client";
 import Link from "next/link";
+import { use, useEffect, useState } from "react";
 
-export default async function Home() {
-  const res = await fetch('http://localhost:3000/api');
-  const data = await res.json();
+export default  function Home(request) {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api`);
+        const data = await response.json();
+        setData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -12,7 +27,7 @@ export default async function Home() {
       <div className="flex flex-row gap-4">
         {data.map((product) => (
           <div key={product.id} className="w-1/4 bg-gray-900 rounded-2xl">
-            {/* <Image  width={400}   height={300} src={product.img} alt={product.name} className="object-cover rounded-t-2xl" /> */}
+            <img  src={product.img} alt={product.name} className="object-cover w-full h-79 rounded-t-2xl" />
             <div className="p-4">
               <h2 className="text-xl font-semibold text-white">{product.name}</h2>
               <p className="text-gray-400">{product.description}</p>
