@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,38 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="bg-gray-800">
+          <div className="container mx-auto  flex items-center justify-between px-5 py-2">
+            <header className="">
+              <Link href="/" className="flex items-center gap-2">
+              <h1 className="text-3xl font-bold">My Next.js App</h1>
+              <p className="text-gray-600">Welcome to my Next.js application!</p>
+              </Link>
+            </header>
+            <nav className="flex items-center gap-10">
+              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-cell">
+                Add New Product
+              </button>
+              <ul className="flex space-x-4">
+                <li>
+                  <a href="/" className="text-blue-600 hover:underline">
+
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="text-blue-600 hover:underline">
+                    About
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+        <div className="container mx-auto px-5 py-1">
         {children}
+        </div>
       </body>
     </html>
   );
